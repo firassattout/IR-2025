@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Information Retrieval System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
+      <h1 class="text-2xl font-bold mb-6 text-center">
+        Information Retrieval System
+      </h1>
+
+      <!-- حقل الإدخال واختيار النموذج وقاعدة البيانات -->
+      <div class="mb-4">
+        <input
+          type="text"
+          id="query"
+          class="w-full p-2 border rounded"
+          placeholder="Enter your query..."
+        />
+        <select id="model" class="w-full p-2 border rounded mt-2">
+          <option value="tfidf">TF-IDF</option>
+          <option value="bert">BERT</option>
+          <option value="hybrid">Hybrid</option>
+          <option value="faiss_tfidf">FAISS TF-IDF</option>
+          <option value="faiss_bert">FAISS BERT</option>
+          <option value="faiss_hybrid">FAISS Hybrid</option>
+        </select>
+        <select id="dataset" class="w-full p-2 border rounded mt-2">
+          <option value="beir_quora">BEIR Quora</option>
+          <option value="antique_test">Antique Test</option>
+        </select>
+        <input
+          type="number"
+          id="k"
+          class="w-full p-2 border rounded mt-2"
+          value="10"
+          min="1"
+          max="100"
+          placeholder="Number of results"
+        />
+        <button
+          onclick="search()"
+          class="w-full bg-blue-500 text-white p-2 rounded mt-2 hover:bg-blue-600"
+        >
+          Search
+        </button>
+      </div>
+
+      <!-- عرض النص المعالج -->
+      <div id="cleaned-query" class="mb-4 hidden">
+        <p class="text-gray-700">
+          <strong>Cleaned Query:</strong> <span id="cleaned-text"></span>
+        </p>
+      </div>
+
+      <!-- عرض الوقت المستغرق -->
+      <div id="elapsed-time" class="mb-4 hidden">
+        <p class="text-gray-700">
+          <strong>Search Time:</strong> <span id="time-text"></span> seconds
+        </p>
+      </div>
+
+      <!-- جدول النتائج -->
+      <div id="results" class="hidden">
+        <h2 class="text-lg font-semibold mb-2">Results</h2>
+        <table class="w-full border-collapse border">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="border p-2">Document ID</th>
+              <th class="border p-2">Similarity Score</th>
+              <th class="border p-2">Document Text</th>
+            </tr>
+          </thead>
+          <tbody id="results-body"></tbody>
+        </table>
+      </div>
+
+      <!-- رسالة الخطأ -->
+      <div id="error" class="text-red-500 mt-4 hidden"></div>
+    </div>
+
+    <script>
+      function search() {
+        const query = document.getElementById("query").value;
+        const model = document.getElementById("model").value;
+        const dataset = document.getElementById("dataset").value;
+        const k = document.getElementById("k").value;
+        const resultsDiv = document.getElementById("results");
+        const resultsBody = document.getElementById("results-body");
+        const cleanedQueryDiv = document.getElementById("cleaned-query");
+        const cleanedText = document.getElementById("cleaned-text");
+        const errorDiv = document.getElementById("error");
+        const elapsedTimeDiv = document.getElementById("elapsed-time");
+        const timeText = document.getElementById("time-text");
+
+        // إعادة تعيين العرض
+        resultsDiv.classList.add("hidden");
+        cleanedQueryDiv.classList.add("hidden");
+        elapsedTimeDiv.classList.add("hidden");
+        errorDiv.classList.add("hidden");
+        resultsBody.innerHTML = "";
+
+        // إرسال الطلب إلى نقطة FastAPI
+        fetch("/frontend/search", {
+          // تعديل المسار ليطابق FastAPI
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Accept: "application/json",
+          },
+          body: `query=${encodeURIComponent(
+            query
+          )}&model=${model}&dataset=${dataset}&k=${k}&candidate_limit=100`,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            if (data.error) {
+              errorDiv.textContent = data.error;
+              errorDiv.classList.remove("hidden");
+              return;
+            }
+
+            // عرض النص المعالج
+            cleanedText.textContent = data.cleaned_query;
+            cleanedQueryDiv.classList.remove("hidden");
+
+            // عرض الوقت المستغرق
+            timeText.textContent = data.elapsed_time.toFixed(3);
+            elapsedTimeDiv.classList.remove("hidden");
+
+            // عرض النتائج
+            data.results.forEach((result) => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                <td class="border p-2">${result.doc_id}</td>
+                <td class="border p-2">${result.score.toFixed(4)}</td>
+                <td class="border p-2">${result.text.substring(0, 200)}${
+                result.text.length > 200 ? "..." : ""
+              }</td>
+              `;
+              resultsBody.appendChild(row);
+            });
+            resultsDiv.classList.remove("hidden");
+          })
+          .catch((error) => {
+            errorDiv.textContent = "Error: " + error.message;
+            errorDiv.classList.remove("hidden");
+          });
+      }
+    </script>
+  </body>
+</html>

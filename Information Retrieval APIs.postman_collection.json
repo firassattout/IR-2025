@@ -1,0 +1,1371 @@
+{
+	"info": {
+		"_postman_id": "0c25a46b-d5b2-4475-af77-46c87c0c8c30",
+		"name": "Information Retrieval APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24864128",
+		"_collection_link": "https://red-escape-605582.postman.co/workspace/Ehsan~0db23753-bf0a-41ce-8824-5dcb978058cd/collection/24864128-0c25a46b-d5b2-4475-af77-46c87c0c8c30?action=share&source=collection_link&creator=24864128"
+	},
+	"item": [
+		{
+			"name": "BERT API",
+			"item": [
+				{
+					"name": "Build BERT Embeddings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n       \"collection_name\": \"beir_quora\",\n        \"model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n        \"vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n        \"batch_size\": 16\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/bert/build_bert_embeddings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bert",
+								"build_bert_embeddings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n       \"collection_name\": \"beir_quora\",\n        \"model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n        \"vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n        \"batch_size\": 16\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/bert/build_bert_embeddings",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"bert",
+										"build_bert_embeddings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:45:26 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "47"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"BERT embeddings built successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Load BERT Embeddings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/bert/load_bert_embeddings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bert",
+								"load_bert_embeddings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transform BERT Query",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n       \"model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n                \"vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n                \"query_text\": \"query\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/bert/transform_bert_query",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bert",
+								"transform_bert_query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n       \"model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n                \"vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n                \"query_text\": \"query\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/bert/transform_bert_query",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"bert",
+										"transform_bert_query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:47:13 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "7760"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"query_embedding\": [\n        [\n            -0.41828200221061707,\n            -0.3602491319179535,\n            0.25635236501693726,\n            -0.15262557566165924,\n            -0.5836912393569946,\n            0.087975412607193,\n            0.9976022839546204,\n            -0.2969929277896881,\n            -0.614512026309967,\n            -0.1050618514418602,\n            0.15567918121814728,\n            0.1389593631029129,\n            -0.2836243212223053,\n            -0.4892868101596832,\n            0.19918008148670197,\n            -0.09583131223917007,\n            -0.2482154816389084,\n            0.5227282643318176,\n            0.20173640549182892,\n            -0.11072903126478195,\n            -0.07533962279558182,\n            0.17763034999370575,\n            0.054782141000032425,\n            -0.4005838930606842,\n            0.1904553323984146,\n            -0.4023674428462982,\n            0.5732393860816956,\n            -0.0707521066069603,\n            -0.1466711014509201,\n            -0.77944415807724,\n            0.15775208175182343,\n            0.3498617112636566,\n            -0.29849526286125183,\n            -0.4760700464248657,\n            -0.4062141180038452,\n            0.0303938165307045,\n            0.10010695457458496,\n            0.038405608385801315,\n            0.5950591564178467,\n            0.340788334608078,\n            -0.04727155342698097,\n            0.08567681163549423,\n            -0.1060013696551323,\n            -0.13105414807796478,\n            -0.031284939497709274,\n            -0.45748069882392883,\n            0.4492950737476349,\n            0.7575905919075012,\n            -0.35116836428642273,\n            -0.033848877996206284,\n            -0.645967960357666,\n            -0.28025108575820923,\n            -0.14658617973327637,\n            0.22099657356739044,\n            0.41235730051994324,\n            -0.14197371900081635,\n            0.1809788942337036,\n            0.13448141515254974,\n            -0.26007822155952454,\n            0.38648608326911926,\n            -0.007614428643137217,\n            0.27978333830833435,\n            -0.4778815805912018,\n            0.6353386044502258,\n            0.3477044105529785,\n            0.012790908105671406,\n            -0.09435427933931351,\n            0.20626366138458252,\n            -0.6209105849266052,\n            0.4004051983356476,\n            0.025843793526291847,\n            -0.0028335798997431993,\n            -0.6684865951538086,\n            0.5606037974357605,\n            -0.2713991105556488,\n            -0.21429605782032013,\n            0.3538048267364502,\n            -0.16198112070560455,\n            -0.20146910846233368,\n            -0.40930306911468506,\n            0.00014119595289230347,\n            0.12164335697889328,\n            -0.19435448944568634,\n            -0.09202448278665543,\n            0.27190089225769043,\n            -0.006878748536109924,\n            0.2733410894870758,\n            -0.023127356544137,\n            0.15793724358081818,\n            0.004294916987419128,\n            0.07569031417369843,\n            0.027447449043393135,\n            0.7794989943504333,\n            -0.21144624054431915,\n            0.276192307472229,\n            0.09495290368795395,\n            0.524031400680542,\n            -0.3727301061153412,\n            0.174605131149292,\n            2.312954902648926,\n            -0.1270148903131485,\n            0.10102633386850357,\n            0.18819129467010498,\n            -0.48964861035346985,\n            0.04618055745959282,\n            -0.030717672780156136,\n            -0.7736956477165222,\n            -0.030391549691557884,\n            0.4052931070327759,\n            0.1790677309036255,\n            0.07862671464681625,\n            -0.16391979157924652,\n            0.16545772552490234,\n            -0.2703106701374054,\n            0.10060027986764908,\n            -0.028057584539055824,\n            -0.25225773453712463,\n            0.5225229263305664,\n            0.7719948291778564,\n            0.06995226442813873,\n            0.05798892676830292,\n            -0.23660536110401154,\n            0.197166308760643,\n            -0.06451371312141418,\n            0.7002356648445129,\n            -1.0552643537521362,\n            0.18226902186870575,\n            -0.3370422124862671,\n            0.4187602996826172,\n            0.1242680773139,\n            0.25257936120033264,\n            0.3946811854839325,\n            0.20453424751758575,\n            0.43394598364830017,\n            -0.019262613728642464,\n            -0.12148182839155197,\n            -0.3947838842868805,\n            -0.22406715154647827,\n            -0.09164945036172867,\n            0.21441571414470673,\n            -0.13168871402740479,\n            -0.4980459213256836,\n            0.11879115551710129,\n            -0.11486164480447769,\n            0.13874386250972748,\n            0.13881941139698029,\n            -0.36750879883766174,\n            0.016587531194090843,\n            0.1452968567609787,\n            -0.05453372001647949,\n            0.08671975135803223,\n            0.5925644040107727,\n            0.15398003160953522,\n            -0.5041765570640564,\n            0.20935110747814178,\n            -0.11058425903320312,\n            0.10539127141237259,\n            -0.2627928555011749,\n            0.7608873248100281,\n            -0.12201166898012161,\n            -0.339465469121933,\n            0.028935236856341362,\n            0.29038554430007935,\n            0.2745906710624695,\n            -0.06870492547750473,\n            -0.3028930425643921,\n            0.5492625832557678,\n            -0.47206974029541016,\n            -0.10208290815353394,\n            -0.3535623848438263,\n            -0.18539875745773315,\n            -0.1394917517900467,\n            -0.7980332374572754,\n            -0.026017742231488228,\n            0.31062355637550354,\n            -0.16556887328624725,\n            0.17725621163845062,\n            -0.2025873214006424,\n            -0.28419235348701477,\n            -0.5027916431427002,\n            0.017498651519417763,\n            -0.1521005630493164,\n            -0.2898467481136322,\n            0.09675297886133194,\n            0.1710118055343628,\n            0.10350972414016724,\n            -0.2113429307937622,\n            0.3427402675151825,\n            -0.36738085746765137,\n            -0.5497803688049316,\n            -0.5020259618759155,\n            -0.6001989245414734,\n            0.5185944437980652,\n            0.2628934979438782,\n            -0.24492914974689484,\n            -0.2497033327817917,\n            0.8439992070198059,\n            0.26644590497016907,\n            -0.23000897467136383,\n            0.10638010501861572,\n            0.6658933162689209,\n            0.394033282995224,\n            0.1955154687166214,\n            -0.22974622249603271,\n            0.027511516585946083,\n            -0.2361992597579956,\n            0.016822373494505882,\n            -0.21575041115283966,\n            -0.055517375469207764,\n            0.5450924038887024,\n            -0.4413634240627289,\n            0.6264362931251526,\n            -0.1236046552658081,\n            0.07376560568809509,\n            0.37435436248779297,\n            -0.028266990557312965,\n            -0.2504676878452301,\n            0.1364562064409256,\n            -0.4030105769634247,\n            -0.28395792841911316,\n            0.16092489659786224,\n            -0.24783377349376678,\n            0.13155490159988403,\n            -0.5927814841270447,\n            0.4401698410511017,\n            0.30662763118743896,\n            -0.30109769105911255,\n            0.18961232900619507,\n            -0.1696191281080246,\n            -0.23607785999774933,\n            0.2541601359844208,\n            -0.4717958867549896,\n            -0.15665145218372345,\n            -0.08514124900102615,\n            -0.26621493697166443,\n            0.0019175881752744317,\n            0.30671462416648865,\n            -0.16248761117458344,\n            0.3131483495235443,\n            0.22163939476013184,\n            -0.45378637313842773,\n            0.8315317034721375,\n            -0.4239415228366852,\n            0.11946626752614975,\n            -0.26200753450393677,\n            0.4482797682285309,\n            0.3205209970474243,\n            -0.12246352434158325,\n            0.1409013420343399,\n            0.08283299207687378,\n            0.006286283489316702,\n            0.17204958200454712,\n            -0.23917727172374725,\n            -0.5998806357383728,\n            -0.1848153918981552,\n            0.34367409348487854,\n            -0.3239009380340576,\n            0.5039505362510681,\n            -0.5300763249397278,\n            -0.04341113194823265,\n            0.2942720651626587,\n            -0.6153308749198914,\n            -0.07019084692001343,\n            0.2629396319389343,\n            0.2528195083141327,\n            -0.06880524009466171,\n            -0.07635650783777237,\n            0.4602086544036865,\n            -0.6904661655426025,\n            0.02019100822508335,\n            -0.6163454651832581,\n            0.2563658654689789,\n            0.1807156205177307,\n            -0.23153100907802582,\n            -0.15013092756271362,\n            0.32185086607933044,\n            0.15301008522510529,\n            -0.010441032238304615,\n            -0.09470051527023315,\n            -0.08140607923269272,\n            -0.581648051738739,\n            -0.018476249650120735,\n            -0.16297024488449097,\n            0.019183361902832985,\n            0.004438385367393494,\n            -0.2305740863084793,\n            -0.32849234342575073,\n            -0.18949373066425323,\n            -0.2944341003894806,\n            -0.3419722020626068,\n            -0.16624288260936737,\n            -0.25002163648605347,\n            0.015875989571213722,\n            -0.22230248153209686,\n            -0.5084041357040405,\n            -0.7017695903778076,\n            0.5246363282203674,\n            0.05071210488677025,\n            0.18099623918533325,\n            0.10191205888986588,\n            0.5361073613166809,\n            0.014019977301359177,\n            0.14487753808498383,\n            0.2741612195968628,\n            0.2965429723262787,\n            -0.29944053292274475,\n            -0.05331118404865265,\n            0.04544924199581146,\n            0.02645527571439743,\n            0.21683615446090698,\n            -0.25116121768951416,\n            -0.030094800516963005,\n            0.22944998741149902,\n            0.4793294370174408,\n            0.3482765853404999,\n            0.10209361463785172,\n            -0.14748923480510712,\n            -0.34027135372161865,\n            0.16543403267860413,\n            -0.34088465571403503,\n            0.04414460062980652,\n            0.5795233845710754,\n            0.16949598491191864,\n            0.18759267032146454,\n            0.39023351669311523,\n            0.0926043763756752,\n            -0.10988238453865051,\n            1.0239039659500122,\n            0.22822122275829315,\n            0.33259403705596924,\n            -0.45433616638183594,\n            0.1918702870607376,\n            -0.2662084102630615,\n            -0.12938453257083893,\n            -0.2909044921398163,\n            0.0243233609944582,\n            -0.27120867371559143,\n            -0.32811620831489563,\n            -0.014496877789497375,\n            -0.33472689986228943,\n            -0.1394893079996109,\n            0.1610913872718811,\n            0.19018107652664185,\n            -0.10189878195524216,\n            -0.08542647212743759,\n            -0.4488668739795685,\n            -0.030472038313746452,\n            -0.30796879529953003,\n            0.2435072660446167,\n            -0.20051950216293335,\n            -0.288298100233078,\n            0.1506519764661789,\n            0.7571099400520325,\n            -0.12588860094547272,\n            0.22928905487060547,\n            0.11884624511003494,\n            0.45674410462379456,\n            -0.47938671708106995,\n            -0.08802714198827744,\n            -0.7529293894767761,\n            -0.32662391662597656,\n            0.07106321305036545,\n            0.26562002301216125,\n            0.27654871344566345,\n            0.183635413646698,\n            -0.2405613660812378,\n            -0.10509702563285828,\n            -0.1444520801305771,\n            0.3364734351634979,\n            0.2623107433319092,\n            -0.4279787838459015,\n            -0.66231769323349,\n            -0.036559462547302246,\n            0.08259905129671097,\n            -0.34227442741394043,\n            0.0035056620836257935,\n            0.36481261253356934,\n            -0.4101850688457489,\n            -0.42990386486053467,\n            -0.046851590275764465,\n            0.27878618240356445,\n            -0.16258253157138824,\n            0.06776080280542374,\n            -0.05696322023868561\n        ]\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "BM25 API",
+			"item": [
+				{
+					"name": "Build BM25 Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/build_bm25_model",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"build_bm25_model"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Load BM25 Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/load_bm25_model",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"load_bm25_model"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transform BM25 Query",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/transform_query",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transform_query"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Evaluation API",
+			"item": [
+				{
+					"name": "Evaluate TF-IDF Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataset_name\": \"example_dataset\",\n  \"tfidf_model_path\": \"../models/tfidf/example_tfidf.joblib\",\n  \"tfidf_vector_path\": \"../models/tfidf/example_vectors.joblib\",\n  \"index_dir\": \"../data/index_example_dataset\",\n  \"sample_size\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/evaluation/evaluate_tfidf_model",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"evaluation",
+								"evaluate_tfidf_model"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"dataset_name\": \"beir/quora/dev\",\n    \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n    \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n    \"index_dir\": \"../data/index_beir_quora\",\n    \"sample_size\": 100,\n    \"alpha\": 0.2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/evaluation/evaluate_tfidf_model",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"evaluation",
+										"evaluate_tfidf_model"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:42:05 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "9990"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"results\": [\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"136644\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"395572\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.2,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.3242424242424242,\n            \"query_id\": \"26885\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.3333333333333333,\n            \"ap\": 0.3333333333333333,\n            \"query_id\": \"110736\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.02040816326530612,\n            \"ap\": 0.02040816326530612,\n            \"query_id\": \"228401\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"500888\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.2606837606837607,\n            \"query_id\": \"359639\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.5,\n            \"query_id\": \"245109\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.3,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"80310\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"469104\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.3,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 0.6785714285714285,\n            \"query_id\": \"22006\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.3,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"353271\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"192471\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.2,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 0.75,\n            \"query_id\": \"306824\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 0,\n            \"mrr\": 0,\n            \"ap\": 0,\n            \"query_id\": \"426300\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"372443\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"294461\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"522891\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"157302\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.25,\n            \"ap\": 0.25,\n            \"query_id\": \"119990\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.3333333333333333,\n            \"ap\": 0.3333333333333333,\n            \"query_id\": \"26799\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.09090909090909091,\n            \"ap\": 0.09090909090909091,\n            \"query_id\": \"87324\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.3333333333333333,\n            \"ap\": 0.3333333333333333,\n            \"query_id\": \"475531\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"342658\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.015151515151515152,\n            \"ap\": 0.015151515151515152,\n            \"query_id\": \"113594\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"460118\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.2,\n            \"recall\": 1,\n            \"mrr\": 0.25,\n            \"ap\": 0.16922762573700514,\n            \"query_id\": \"223203\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.3333333333333333,\n            \"ap\": 0.18229166666666666,\n            \"query_id\": \"229316\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"123295\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.16666666666666666,\n            \"ap\": 0.16666666666666666,\n            \"query_id\": \"167927\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.2,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 0.8333333333333333,\n            \"query_id\": \"37563\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 0.36187766714082503,\n            \"query_id\": \"95833\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"66571\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.09090909090909091,\n            \"ap\": 0.09090909090909091,\n            \"query_id\": \"167476\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"174024\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.3,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 0.7555555555555555,\n            \"query_id\": \"387328\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"48446\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"374936\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"127899\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.008620689655172414,\n            \"ap\": 0.008620689655172414,\n            \"query_id\": \"115033\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"46970\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.008695652173913044,\n            \"ap\": 0.008695652173913044,\n            \"query_id\": \"430069\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"512360\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.16666666666666666,\n            \"ap\": 0.16666666666666666,\n            \"query_id\": \"28580\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"156303\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"460864\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.004032258064516129,\n            \"ap\": 0.004032258064516129,\n            \"query_id\": \"26488\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"469407\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.3333333333333333,\n            \"ap\": 0.3333333333333333,\n            \"query_id\": \"387600\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"424703\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.01694915254237288,\n            \"ap\": 0.01694915254237288,\n            \"query_id\": \"387096\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"488366\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.2,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"75347\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"484367\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 0,\n            \"mrr\": 0,\n            \"ap\": 0,\n            \"query_id\": \"245677\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.2,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 0.8333333333333333,\n            \"query_id\": \"162907\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"33835\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"320383\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"15963\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"336427\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.2,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"27531\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"1803\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.2,\n            \"ap\": 0.2,\n            \"query_id\": \"394638\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"374104\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"303239\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.3,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 0.6016240157480315,\n            \"query_id\": \"120605\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.5,\n            \"query_id\": \"485870\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"104263\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.047619047619047616,\n            \"ap\": 0.047619047619047616,\n            \"query_id\": \"355102\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"5162\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"153743\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"409374\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"409090\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"363937\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"222744\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"433851\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.1,\n            \"ap\": 0.1,\n            \"query_id\": \"396902\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.125,\n            \"ap\": 0.125,\n            \"query_id\": \"416272\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.07692307692307693,\n            \"ap\": 0.07692307692307693,\n            \"query_id\": \"269921\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"171476\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.2,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"176358\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.3333333333333333,\n            \"ap\": 0.3333333333333333,\n            \"query_id\": \"67371\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"278487\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.125,\n            \"ap\": 0.1534090909090909,\n            \"query_id\": \"1350\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.5,\n            \"query_id\": \"406311\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.2,\n            \"ap\": 0.2,\n            \"query_id\": \"422602\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"423298\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"494430\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.3,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.49916666666666665,\n            \"query_id\": \"29637\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.012345679012345678,\n            \"ap\": 0.012345679012345678,\n            \"query_id\": \"382054\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"163688\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.25,\n            \"ap\": 0.25,\n            \"query_id\": \"259503\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.5,\n            \"query_id\": \"340421\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"368946\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.3,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.49999999999999994,\n            \"query_id\": \"195640\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 1,\n            \"ap\": 1,\n            \"query_id\": \"425731\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.2,\n            \"ap\": 0.2,\n            \"query_id\": \"266582\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.14285714285714285,\n            \"ap\": 0.14285714285714285,\n            \"query_id\": \"29011\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0.1,\n            \"recall\": 1,\n            \"mrr\": 0.5,\n            \"ap\": 0.5,\n            \"query_id\": \"193185\",\n            \"model\": \"TF-IDF\"\n        },\n        {\n            \"precision@10\": 0,\n            \"recall\": 1,\n            \"mrr\": 0.0035460992907801418,\n            \"ap\": 0.0035460992907801418,\n            \"query_id\": \"458986\",\n            \"model\": \"TF-IDF\"\n        }\n    ],\n    \"average_metrics\": {\n        \"TF-IDF\": {\n            \"precision@10\": 0.10799999999999998,\n            \"recall\": 0.98,\n            \"mrr\": 0.6807229999170672,\n            \"ap\": 0.6526728322696149\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Evaluate BERT Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dataset_name\": \"beir/quora/dev\",\n    \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n    \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n    \"index_dir\": \"../data/index_beir_quora\",\n    \"sample_size\": 100,\n    \"alpha\": 0.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/evaluation/evaluate_bert_model",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"evaluation",
+								"evaluate_bert_model"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Evaluate Hybrid Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dataset_name\": \"beir/quora/dev\",\n    \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n    \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n    \"index_dir\": \"../data/index_beir_quora\",\n    \"sample_size\": 100,\n    \"alpha\": 0.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/evaluation/evaluate_hybrid_model",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"evaluation",
+								"evaluate_hybrid_model"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Evaluate All Models",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dataset_name\": \"beir/quora/dev\",\n    \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n    \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n    \"index_dir\": \"../data/index_beir_quora\",\n    \"sample_size\": 100,\n    \"alpha\": 0.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/evaluation/evaluate_all_models",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"evaluation",
+								"evaluate_all_models"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FAISS Build API",
+			"item": [
+				{
+					"name": "Build FAISS Index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"dataset\": \"beir_quora\",\n        \"model_type\": \"tfidf\",\n        \"vector_path\": \"models/tfidf/beir_quora_tfidf_vectors.joblib\",\n        \"index_path\": \"models/faiss/beir_quora_tfidf_faiss.index\",\n        \"svd_path\": \"models/tfidf/beir_quora_svd.joblib\",\n        \"tfidf_model_path\": \"models/tfidf/beir_quora_tfidf.joblib\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/faiss_build/build_faiss_index",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"faiss_build",
+								"build_faiss_index"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"dataset\": \"beir_quora\",\n        \"model_type\": \"tfidf\",\n        \"vector_path\": \"models/tfidf/beir_quora_tfidf_vectors.joblib\",\n        \"index_path\": \"models/faiss/beir_quora_tfidf_faiss.index\",\n        \"svd_path\": \"models/tfidf/beir_quora_svd.joblib\",\n        \"tfidf_model_path\": \"models/tfidf/beir_quora_tfidf.joblib\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/faiss_build/build_faiss_index",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"faiss_build",
+										"build_faiss_index"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:40:27 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "66"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"FAISS index built successfully for beir_quora (tfidf)\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Frontend API",
+			"item": [
+				{
+					"name": "Index Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/frontend/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"frontend",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "query",
+									"value": "example query text"
+								},
+								{
+									"key": "model",
+									"value": "tfidf"
+								},
+								{
+									"key": "dataset",
+									"value": "beir_quora"
+								},
+								{
+									"key": "k",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "candidate_limit",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/frontend/search",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"frontend",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hybrid API",
+			"item": [
+				{
+					"name": "Build Hybrid Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n        \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n        \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n        \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n        \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n        \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n        \"alpha\": 0.5,\n        \"n_components\": 384\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/hybrid/build_hybrid_model",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hybrid",
+								"build_hybrid_model"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n        \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n        \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n        \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n        \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n        \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n        \"alpha\": 0.5,\n        \"n_components\": 384\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/hybrid/build_hybrid_model",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"hybrid",
+										"build_hybrid_model"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:34:44 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "44"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Hybrid model built successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Transform Hybrid Query",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n     \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n    \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n    \"query_text\": \"query\",\n    \"alpha\": 0.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/hybrid/transform_hybrid_query",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"hybrid",
+								"transform_hybrid_query"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n    \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n    \"query_text\": \"query\",\n    \"alpha\": 0.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/hybrid/transform_hybrid_query",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"hybrid",
+										"transform_hybrid_query"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:35:22 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "8447"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"query_vector_shape\": \"(1, 384)\",\n    \"query_vector\": [\n        [\n            -0.007754090084017562,\n            -0.026338285644434904,\n            0.006560369405834767,\n            -0.011044814182019245,\n            -0.03352926293327316,\n            0.011881434102588637,\n            0.07306418732955826,\n            -0.03841003076328504,\n            -0.0628977467696567,\n            -0.01918066989848959,\n            0.017604517533403023,\n            -0.0033112393221991273,\n            0.0010516768572582276,\n            -0.04187423483759979,\n            0.015550162122326091,\n            -0.024614507642059875,\n            0.005112284329220562,\n            0.04892173619339578,\n            0.0219770053040727,\n            -0.009725770605276041,\n            -0.012265812526318282,\n            0.01092108328326723,\n            0.0019840165971076436,\n            -0.014298133247420249,\n            0.02068081527954205,\n            -0.03821791466941588,\n            0.04579048023346964,\n            0.0002592132062082435,\n            -0.027129877250081747,\n            -0.049565781221260444,\n            -0.004679499582362943,\n            0.022430148993061182,\n            -0.0366165428619436,\n            -0.037220528128701864,\n            -0.018490258454271255,\n            0.017319885603829598,\n            0.03163593583200412,\n            -0.008263039695551177,\n            0.04055909601847002,\n            0.03809162289124219,\n            0.006775370879539673,\n            0.01611344808141288,\n            -0.0022987645756486165,\n            -0.037700977951625,\n            0.017081792783001613,\n            -0.06378076281833855,\n            0.0383486960844614,\n            0.04365351689073342,\n            -0.0416922073884012,\n            0.03519587486458256,\n            -0.05083086793407428,\n            -0.005538856831666385,\n            -0.0164719212978679,\n            0.009705370761451358,\n            0.04804043810033612,\n            -0.01695254379768447,\n            0.029543096850098156,\n            -0.004973079595206287,\n            -0.018434910213799876,\n            0.03559430602955503,\n            -0.009096208909593168,\n            0.021167030413867707,\n            -0.043895875978097174,\n            0.07096966684738538,\n            0.03906194975621496,\n            0.011701428334375616,\n            -0.016987120649950865,\n            0.01683344729875823,\n            -0.050541257316318804,\n            0.019149616866278578,\n            -0.01879062827128479,\n            -0.00010128125790072096,\n            -0.07182859227379736,\n            0.03989563881390537,\n            -0.04732952370883495,\n            0.0029166607897926702,\n            0.02520502787721082,\n            -0.012750880862472364,\n            -0.03985460616758131,\n            0.022913903803576524,\n            0.04659363412567156,\n            0.015762169772877588,\n            -0.036005471418820344,\n            0.0021389436426656125,\n            -0.006578454858894807,\n            0.006143722004706399,\n            0.022152836724454054,\n            0.01787840568813339,\n            0.011869834216348378,\n            0.013045363670380927,\n            -0.003205590417881111,\n            -0.01508077215914563,\n            0.06102624998050708,\n            -0.025788802876584672,\n            0.019246808438652518,\n            -0.0059540866427244404,\n            0.05253697202685209,\n            -0.016676682340455905,\n            0.019336717627798008,\n            0.16803854234428842,\n            -0.028644735138027608,\n            0.009930356156711189,\n            0.01610108418528951,\n            -0.05940803150837763,\n            0.009088233861915034,\n            0.002464224416806351,\n            -0.04483168285499871,\n            0.0014214915485127322,\n            0.012400833076837314,\n            0.016409619111589148,\n            -0.0036948069631939015,\n            -0.03586112064682396,\n            0.023491459834279978,\n            0.011506305056244896,\n            -0.023018558593039907,\n            0.0003181720921314915,\n            -0.03519391701394457,\n            0.04977815614666653,\n            0.045815475217366106,\n            0.023594222833016862,\n            0.016406425228544144,\n            -0.0176356080172553,\n            0.016331241994464403,\n            -0.0012940844676236287,\n            0.06181210326298398,\n            -0.07537202551227887,\n            0.0054612923980145245,\n            -0.006511530458697581,\n            0.05978144893752735,\n            0.04042583454108477,\n            0.06445747637600027,\n            0.01007823032716873,\n            0.0009014459216342436,\n            0.07761102749372001,\n            0.02059565157434839,\n            -0.022403903412202063,\n            -0.03766129047663258,\n            -0.019019828962952554,\n            -0.00408033654112216,\n            -0.0061636440093057986,\n            -0.004326963744808795,\n            -0.04274972323955493,\n            0.02042815320997554,\n            0.01579462678142753,\n            -0.0008714954356716133,\n            0.02971235703043589,\n            -0.01551253715110311,\n            -0.004660885111813009,\n            -0.035902627711576394,\n            -0.019982569839950365,\n            -0.01134998232146004,\n            0.06662508381955856,\n            0.005515789223961901,\n            -0.06760344422265253,\n            0.006678561780475482,\n            0.03096697213175089,\n            0.005959778523279526,\n            -0.08276728990049463,\n            0.14704376456185542,\n            0.06626572351685396,\n            -0.029836496138318416,\n            0.005406537324216568,\n            0.023047241193621643,\n            -0.03074339498005703,\n            -0.0312420582651583,\n            -0.040453859065185144,\n            0.0026473663106611894,\n            -0.021986623987398257,\n            0.011846524872003356,\n            -0.011374584133996215,\n            -0.00865948062705139,\n            0.0003781414759213928,\n            -0.08998426955985864,\n            0.012020955088448054,\n            0.032291598852891415,\n            -0.01819298632269105,\n            0.006763394138226171,\n            -0.02879619510477687,\n            -0.019715273822930396,\n            -0.045004343451932854,\n            0.014714167801186988,\n            -0.019594719328006743,\n            -0.021796181085118663,\n            -0.0010494464524808279,\n            0.04252496017051033,\n            0.01549329884551704,\n            -0.003415656425696372,\n            0.008991133381971779,\n            -0.004799088107903207,\n            -0.021389526482663544,\n            -0.035037376597162835,\n            -0.05310352902497528,\n            0.005976284267696891,\n            -0.019921823231141625,\n            0.002491147585395811,\n            -0.007578170048248097,\n            0.04683625618488999,\n            0.007798873668075754,\n            -0.000900622879845412,\n            0.008622314128118995,\n            0.0503422150839356,\n            0.024462301188437882,\n            0.00932001144032526,\n            -0.010434963629546587,\n            0.0004171879572722251,\n            -0.017088502339534968,\n            0.012294854383691812,\n            0.020126150523723914,\n            0.004016536639827874,\n            0.030119805605139625,\n            -0.01950593961261133,\n            0.040686224060624984,\n            0.0057374400356632795,\n            -0.008367718100672902,\n            0.010704508350911385,\n            -0.000982374668871797,\n            -0.037992858804311025,\n            0.007446388090011464,\n            -0.01940283779434212,\n            -0.026160911873048344,\n            0.0404357038439936,\n            -0.014552703599884436,\n            0.03625603121312555,\n            -0.009392023738411949,\n            0.030853802306176955,\n            -0.01954457301281906,\n            -0.02418075652883872,\n            -0.009177483247715366,\n            -0.007369413627178097,\n            -0.01959616778310105,\n            0.016345337236394336,\n            -0.02497053629959456,\n            -0.036475019633574454,\n            -0.020285325168535262,\n            -0.009338433015220839,\n            0.012697041764380159,\n            0.033059047326615236,\n            -0.00560755250762298,\n            -0.002296812063177528,\n            0.03924556228213294,\n            -0.012792731266216224,\n            0.05027150648515532,\n            -0.037711076366878385,\n            0.0156929634076031,\n            -0.009537455265181537,\n            0.050467721505782256,\n            0.034889918834087943,\n            -0.01807364264764725,\n            0.018747879307931453,\n            0.0041147086608792115,\n            -0.024799930954412224,\n            0.0007347058496806336,\n            -0.011536814333394426,\n            -0.05529761719409279,\n            -0.024568537033482718,\n            0.01734646338233914,\n            -0.002329141852494339,\n            0.05587255753906928,\n            -0.0059842484200150065,\n            -0.0024474726112549234,\n            0.04451975805003032,\n            -0.04393841615643296,\n            0.008799786873567255,\n            0.01456323696524091,\n            0.015927442825647627,\n            -0.009823541521455089,\n            -0.016872009338791155,\n            0.05112140029624185,\n            -0.013538867966830286,\n            0.003293580028479428,\n            -0.06407047062716424,\n            -0.006484436158444688,\n            -0.01405822345684872,\n            -0.017733231494197112,\n            -0.021480529368115543,\n            0.03752978755294941,\n            -0.002717946488325046,\n            -0.040672009903673305,\n            -0.03910074779398491,\n            -0.012077729033549141,\n            -0.019327913803719697,\n            0.019211839763035643,\n            -0.03032697220578605,\n            0.0162549702676779,\n            -0.00220058103413761,\n            0.03523974061155538,\n            -0.06108234127350077,\n            -0.017235812550665825,\n            -0.055951781645118846,\n            -0.011796963053767862,\n            -0.02527012872254781,\n            0.019041190134069054,\n            0.021255546168968284,\n            0.002748222280686285,\n            -0.05368440064868387,\n            -0.04328638821999922,\n            0.004708002993741224,\n            -0.012541605050052612,\n            -0.01064593029542834,\n            -0.032990830897399084,\n            0.012727310396554222,\n            -0.03563970910493212,\n            0.03029299812213692,\n            0.020087030135709713,\n            0.0006427628226332895,\n            -0.007883787118866318,\n            -0.04284651185278272,\n            -0.0018601085420986508,\n            -0.005475041680446293,\n            -0.029526734647231004,\n            -0.019756809654852252,\n            -0.017742274778347146,\n            0.03102757466080392,\n            0.03855679535772927,\n            0.012081307712586893,\n            0.016333522560052053,\n            -0.0010135779526310087,\n            -0.023435342518902058,\n            -0.012414937633026733,\n            0.005357693270323666,\n            0.0042570159569870125,\n            -0.022715223661599074,\n            -0.04878062227676663,\n            0.012584538481028104,\n            0.07026726052227375,\n            -0.02102891557566072,\n            -0.020856083661137018,\n            0.05066681468697372,\n            -0.018930627956268743,\n            0.03909885132667226,\n            -0.006498700268616531,\n            -0.005854213606260043,\n            0.07947682275828656,\n            -0.08114960513986232,\n            0.0009821050443943116,\n            -0.004283149067172981,\n            0.04295806665332956,\n            0.05478040207044414,\n            0.04965306255621987,\n            -0.09156227541166337,\n            -0.014737676840594934,\n            0.04457472693657755,\n            0.06950993363041466,\n            -0.0392173572354176,\n            -0.05690672482891181,\n            -0.11251693794875815,\n            -0.05257643461615106,\n            0.00672517027356203,\n            0.00030106116722305315,\n            0.008739528274000125,\n            0.12498667717668918,\n            -0.010368620450578972,\n            0.1286990839321328,\n            -0.007272818022197037,\n            0.02934066236769512,\n            -0.01824312827318516,\n            0.08904433996407014,\n            -0.05027338196006863,\n            0.07034850067154318,\n            -0.003605438260201467,\n            -0.008022364160293609,\n            0.029321574968067872,\n            0.06828990629424203,\n            -0.020834598135401866,\n            0.02224369801448152,\n            -0.04229271058222296,\n            -0.0033412128537436848,\n            -0.05379990541574963,\n            0.009758185568430604,\n            -0.01702107199796704,\n            -0.0382970407070103,\n            -0.05544685799204658,\n            -0.05214272839638318,\n            0.01996473419059383,\n            0.0171178395832186,\n            -0.045889517726879485,\n            0.026444171193594247,\n            0.004458177101166472,\n            -0.007606222411143997,\n            0.028270323336484764,\n            -0.009534916821911925,\n            -0.03740883202383871,\n            0.034747008061200166,\n            -0.0674942226886014\n        ]\n    ],\n    \"top_documents\": [\n        {\n            \"doc_id\": \"12643\",\n            \"similarity\": 0.4610781633664085\n        },\n        {\n            \"doc_id\": \"177274\",\n            \"similarity\": 0.4375770583976207\n        },\n        {\n            \"doc_id\": \"363354\",\n            \"similarity\": 0.4370998701884992\n        },\n        {\n            \"doc_id\": \"6553\",\n            \"similarity\": 0.4354222389766201\n        },\n        {\n            \"doc_id\": \"39204\",\n            \"similarity\": 0.4354222389766201\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Indexing API",
+			"item": [
+				{
+					"name": "Build Index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"collection_name\": \"beir_quora\",\n        \"index_dir\": \"../data/index_beir_quora\",\n        \"fields\": [\"cleaned_text_bert\",\"cleaned_text_tfidf\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/indexing/build_index",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"indexing",
+								"build_index"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"collection_name\": \"beir_quora\",\n        \"index_dir\": \"../data/index_beir_quora\",\n        \"fields\": [\"cleaned_text_bert\",\"cleaned_text_tfidf\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/indexing/build_index",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"indexing",
+										"build_index"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:31:47 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "80"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Index built successfully for beir_quora in ../data/index_beir_quora\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Search Index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"index_dir\": \"../data/index_beir_quora\",\n        \"query_text\": \"query\",\n        \"fields\": [\"cleaned_text_bert\",\"cleaned_text_tfidf\"],\n        \"limit\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/indexing/search_index",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"indexing",
+								"search_index"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"index_dir\": \"../data/index_beir_quora\",\n        \"query_text\": \"query\",\n        \"fields\": [\"cleaned_text_bert\",\"cleaned_text_tfidf\"],\n        \"limit\": 10\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/indexing/search_index",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"indexing",
+										"search_index"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:32:16 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "1448"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"query_text\": \"query\",\n    \"results\": [\n        {\n            \"doc_id\": \"400077\",\n            \"content\": {\n                \"cleaned_text_bert\": \"what is the difference between mysql query and mysql query\",\n                \"cleaned_text_tfidf\": \"what difference mysql query mysql query\"\n            }\n        },\n        {\n            \"doc_id\": \"474609\",\n            \"content\": {\n                \"cleaned_text_bert\": \"what is the difference between query row and query resulty in codeigniter\",\n                \"cleaned_text_tfidf\": \"what difference query row query resulty codeigniter\"\n            }\n        },\n        {\n            \"doc_id\": \"108504\",\n            \"content\": {\n                \"cleaned_text_bert\": \"what is query language\",\n                \"cleaned_text_tfidf\": \"what query language\"\n            }\n        },\n        {\n            \"doc_id\": \"151799\",\n            \"content\": {\n                \"cleaned_text_bert\": \"query on mba from canada\",\n                \"cleaned_text_tfidf\": \"query mba canada\"\n            }\n        },\n        {\n            \"doc_id\": \"316029\",\n            \"content\": {\n                \"cleaned_text_bert\": \"indian passport query\",\n                \"cleaned_text_tfidf\": \"indian passport query\"\n            }\n        },\n        {\n            \"doc_id\": \"363354\",\n            \"content\": {\n                \"cleaned_text_bert\": \"native sql query\",\n                \"cleaned_text_tfidf\": \"native sql query\"\n            }\n        },\n        {\n            \"doc_id\": \"108503\",\n            \"content\": {\n                \"cleaned_text_bert\": \"what are some query languages\",\n                \"cleaned_text_tfidf\": \"what query language\"\n            }\n        },\n        {\n            \"doc_id\": \"287218\",\n            \"content\": {\n                \"cleaned_text_bert\": \"what s wrong with mysql query\",\n                \"cleaned_text_tfidf\": \"what wrong mysql query\"\n            }\n        },\n        {\n            \"doc_id\": \"470622\",\n            \"content\": {\n                \"cleaned_text_bert\": \"what is a procedural query language\",\n                \"cleaned_text_tfidf\": \"what procedural query language\"\n            }\n        },\n        {\n            \"doc_id\": \"535481\",\n            \"content\": {\n                \"cleaned_text_bert\": \"is there a way to query the quora database\",\n                \"cleaned_text_tfidf\": \"way query quora database\"\n            }\n        }\n    ],\n    \"result_count\": 10\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Preprocessing API",
+			"item": [
+				{
+					"name": "Load and Store Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataset_name\": \"beir/quora/dev\",\n  \"collection_name\": \"beir_quora\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/preprocess/load_and_store",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"preprocess",
+								"load_and_store"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"dataset_name\": \"beir/quora/dev\",\n  \"collection_name\": \"beir_quora\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/preprocess/load_and_store",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"preprocess",
+										"load_and_store"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 18:57:53 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "76"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"Dataset\": \"beir/quora/dev\",\n    \"Number\": 522931,\n    \"qrels\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Query Processing API",
+			"item": [
+				{
+					"name": "Retrieve Documents TF-IDF",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n  \"query\": \"example query text\",\n   \"index_dir\": \"../data/index_beir_quora\",\n  \"k\": 5,\n  \"candidate_limit\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/query_processing/retrieve_documents_tfidf",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"query_processing",
+								"retrieve_documents_tfidf"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n  \"query\": \"example query text\",\n   \"index_dir\": \"../data/index_beir_quora\",\n  \"k\": 5,\n  \"candidate_limit\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/query_processing/retrieve_documents_tfidf",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"query_processing",
+										"retrieve_documents_tfidf"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 18:53:15 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "316"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"cleaned_query\": \"example query text\",\n    \"top_documents\": [\n        {\n            \"doc_id\": \"140059\",\n            \"similarity\": 0.9620619159910124\n        },\n        {\n            \"doc_id\": \"150652\",\n            \"similarity\": 0.8626058463327162\n        },\n        {\n            \"doc_id\": \"413986\",\n            \"similarity\": 0.8622067517255874\n        },\n        {\n            \"doc_id\": \"173299\",\n            \"similarity\": 0.8622021332019152\n        },\n        {\n            \"doc_id\": \"444987\",\n            \"similarity\": 0.8621676545704133\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve Documents BERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n  \"query\": \"example query text\",\n    \"index_dir\": \"../data/index_beir_quora\",\n  \"k\": 5,\n  \"candidate_limit\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/query_processing/retrieve_documents_bert",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"query_processing",
+								"retrieve_documents_bert"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n  \"query\": \"example query text\",\n    \"index_dir\": \"../data/index_beir_quora\",\n  \"k\": 5,\n  \"candidate_limit\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/query_processing/retrieve_documents_bert",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"query_processing",
+										"retrieve_documents_bert"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 18:54:38 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "279"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"top_documents\": [\n        {\n            \"doc_id\": \"108504\",\n            \"similarity\": 0.7389934062957764\n        },\n        {\n            \"doc_id\": \"108503\",\n            \"similarity\": 0.6572322845458984\n        },\n        {\n            \"doc_id\": \"535481\",\n            \"similarity\": 0.5888988971710205\n        },\n        {\n            \"doc_id\": \"288416\",\n            \"similarity\": 0.5827890634536743\n        },\n        {\n            \"doc_id\": \"287217\",\n            \"similarity\": 0.5727104544639587\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve Documents Hybrid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n    \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n    \"sample_size\": 100,\n  \"query\": \"example query text\",\n   \"index_dir\": \"../data/index_beir_quora\",\n  \"alpha\": 0.5,\n  \"k\":5,\n  \"candidate_limit\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/query_processing/retrieve_documents_hybrid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"query_processing",
+								"retrieve_documents_hybrid"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tfidf_model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n    \"tfidf_vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n    \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n    \"bert_model_path\": \"../models/embeddings/beir_quora_bert.joblib\",\n    \"bert_vector_path\": \"../models/embeddings/beir_quora_vectors.joblib\",\n    \"hybrid_vector_path\": \"../models/hybrid/beir_quora_hybrid_vectors.joblib\",\n    \"sample_size\": 100,\n  \"query\": \"example query text\",\n   \"index_dir\": \"../data/index_beir_quora\",\n  \"alpha\": 0.5,\n  \"k\":5,\n  \"candidate_limit\": 100\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/query_processing/retrieve_documents_hybrid",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"query_processing",
+										"retrieve_documents_hybrid"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 18:56:22 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "277"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"top_documents\": [\n        {\n            \"doc_id\": \"140059\",\n            \"similarity\": 0.6057340619964026\n        },\n        {\n            \"doc_id\": \"56021\",\n            \"similarity\": 0.591350496160989\n        },\n        {\n            \"doc_id\": \"193984\",\n            \"similarity\": 0.5896863765522959\n        },\n        {\n            \"doc_id\": \"428561\",\n            \"similarity\": 0.5796599972903536\n        },\n        {\n            \"doc_id\": \"275988\",\n            \"similarity\": 0.5764334542955273\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "TF-IDF API",
+			"item": [
+				{
+					"name": "Build TF-IDF Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"collection_name\": \"beir_quora\",\n  \"model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n  \"vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n  \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n  \"n_components\": 384\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tfidf/build_tfidf_model",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tfidf",
+								"build_tfidf_model"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"collection_name\": \"beir_quora\",\n  \"model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n  \"vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n  \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n  \"n_components\": 384\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/tfidf/build_tfidf_model",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"tfidf",
+										"build_tfidf_model"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 18:48:31 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "37"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Model built successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Load TF-IDF Model",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n  \"vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n  \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tfidf/load_tfidf_model",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tfidf",
+								"load_tfidf_model"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transform TF-IDF Query",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"model_path\": \"../models/tfidf/beir_quora_tfidf.joblib\",\n  \"vector_path\": \"../models/tfidf/beir_quora_tfidf_vectors.joblib\",\n  \"svd_path\": \"../models/tfidf/beir_quora_svd.joblib\",\n  \"query_text\": \"example query text\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tfidf/transform_query",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tfidf",
+								"transform_query"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		}
+	]
+}
