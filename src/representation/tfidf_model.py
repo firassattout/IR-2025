@@ -7,14 +7,12 @@ import os
 from src.utils.clean_text import clean_text
 
 def build_tfidf_model(collection_name, model_path, vector_path, svd_path=None, n_components=100):
-    """بناء نموذج TF-IDF وحفظ النموذج والمتجهات. يدعم SVD اختياريًا."""
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     model_path = os.path.join(project_root, model_path)
     vector_path = os.path.join(project_root, vector_path)
     if svd_path:
         svd_path = os.path.join(project_root, svd_path)
 
-    # جلب البيانات من MongoDB
     client = MongoClient('localhost', 27017)
     db = client['IR_PROJECT']
     collection = db[collection_name]
@@ -42,7 +40,6 @@ def build_tfidf_model(collection_name, model_path, vector_path, svd_path=None, n
         print(f"✅ تم حفظ نموذج SVD في: {svd_path}")
 
 def load_tfidf_model(model_path, vector_path, svd_path=None):
-    """تحميل نموذج TF-IDF والمتجهات. يدعم تحميل SVD اختياريًا."""
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     model_path = os.path.join(project_root, model_path)
     vector_path = os.path.join(project_root, vector_path)

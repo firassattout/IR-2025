@@ -33,14 +33,13 @@ async def api_build_model(data: BuildModelRequest):
 
 @app.post("/load_tfidf_model")
 async def api_load_tfidf_model(data: LoadModelRequest):
-        # تحميل النموذج
         result = load_tfidf_model(data.model_path, data.vector_path, data.svd_path)
         if data.svd_path:
             vectorizer, tfidf_matrix, svd, doc_ids = result
         else:
             vectorizer, tfidf_matrix, doc_ids = result
 
-        feature_names = vectorizer.get_feature_names_out()  # تحويل إلى قائمة
+        feature_names = vectorizer.get_feature_names_out() 
         return {
             "vectorizerQ": feature_names.tolist(),
 
@@ -49,18 +48,18 @@ async def api_load_tfidf_model(data: LoadModelRequest):
 
 @app.post("/transform_query")
 async def api_transform_query(data: TransformQueryRequest):
-        # تحميل النموذج
+    
         result = load_tfidf_model(data.model_path, data.vector_path, data.svd_path)
         if data.svd_path:
             vectorizer, tfidf_matrix, svd, doc_ids = result
         else:
             vectorizer, tfidf_matrix, doc_ids = result
 
-        # تحويل الاستعلام
+   
         vec, cleaned = transform_tfidf_query(vectorizer, data.query_text)
         queryVec=vec.toarray()[0]
         return {
             "cleaned_text": cleaned,
-            "vector_shape": str(vec.shape),  # تحويل tuple إلى سلسلة
-            "query_vec": queryVec.tolist()  # تحويل إلى قائمة
+            "vector_shape": str(vec.shape),  
+            "query_vec": queryVec.tolist() 
         }

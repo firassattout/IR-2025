@@ -34,7 +34,7 @@ async def api_load_bm25_model(data: LoadModelRequest):
     try:
         bm25, doc_ids = load_bm25_model(data.model_path, data.vector_path)
         return {
-            "doc_ids": doc_ids,  # إرجاع معرفات الوثائق
+            "doc_ids": doc_ids, 
             "status": "Model loaded successfully"
         }
     except Exception as e:
@@ -46,15 +46,13 @@ async def api_transform_query(data: TransformQueryRequest):
     تحويل الاستعلام إلى درجات BM25.
     """
     try:
-        # تحميل النموذج
         bm25, doc_ids = load_bm25_model(data.model_path, data.vector_path)
 
-        # تحويل الاستعلام
         scores, cleaned_query = transform_bm25_query(bm25, data.query_text)
         return {
             "cleaned_text": cleaned_query,
-            "scores_shape": str(scores.shape),  # شكل مصفوفة الدرجات
-            "scores": scores.tolist()  # تحويل إلى قائمة
+            "scores_shape": str(scores.shape), 
+            "scores": scores.tolist() 
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error transforming query: {str(e)}")

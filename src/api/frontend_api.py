@@ -15,15 +15,12 @@ from src.representation.vector_store import retrieve_documents_faiss, load_faiss
 
 app = FastAPI(title="Frontend API")
 
-# إعداد المسارات
 project_root = os.path.abspath(os.path.join(os.getcwd(), ""))
 if project_root not in sys.path:
     sys.path.append(project_root)
 
-# إعداد القوالب
 templates = Jinja2Templates(directory=os.path.join(os.path.dirname(__file__), "../ui/templates"))
 
-# إعداد MongoDB
 client = MongoClient('localhost', 27017)
 db = client['IR_PROJECT']
 
@@ -44,7 +41,6 @@ def load_models_once(dataset: str):
     loaded_models[dataset] = models
     return models
 
-# دالة لتحميل النماذج بناءً على قاعدة البيانات
 def load_models(dataset: str):
     tfidf_vectorizer, tfidf_matrix, tfidf_doc_ids = load_tfidf_model(
         f"../models/tfidf/{dataset}_tfidf.joblib",
@@ -79,9 +75,8 @@ async def index(request: Request):
 
 @app.post("/search")
 async def search(request: Request, query: str = Form(...), model: str = Form(...), dataset: str = Form(...), k: int = Form(10), candidate_limit: int = Form(100)):
-    start_time = time.time()  # بدء المؤقت
+    start_time = time.time()  
 
-    # تحميل النماذج وقاعدة البيانات
     (
         tfidf_vectorizer, tfidf_matrix, tfidf_doc_ids, svd_model,
         bert_tokenizer, bert_model, bert_embeddings, bert_doc_ids,
@@ -92,7 +87,6 @@ async def search(request: Request, query: str = Form(...), model: str = Form(...
         index_dir, collection
     ) = load_models_once(dataset)
 
-    # تنفيذ البحث بناءً على النموذج المختار
     if model == 'tfidf':
         results, cleaned_query = retrieve_documents_tfidf(
             tfidf_vectorizer, tfidf_matrix, tfidf_doc_ids, query, svd_model=svd_model,
@@ -127,7 +121,7 @@ async def search(request: Request, query: str = Form(...), model: str = Form(...
     else:
         return {"error": "Invalid model selected"}, 400
 
-    elapsed_time = time.time() - start_time  # حساب الوقت المستغرق
+    elapsed_time = time.time() - start_time  
 
     doc_ids_only = [doc_id for doc_id, _ in results]
     docs = collection.find({'doc_id': {'$in': doc_ids_only}})

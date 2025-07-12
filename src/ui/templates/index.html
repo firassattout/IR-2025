@@ -20,7 +20,6 @@
         Information Retrieval System
       </h1>
 
-      <!-- حقل الإدخال واختيار النموذج وقاعدة البيانات -->
       <div class="mb-4">
         <input
           type="text"
@@ -57,21 +56,18 @@
         </button>
       </div>
 
-      <!-- عرض النص المعالج -->
       <div id="cleaned-query" class="mb-4 hidden">
         <p class="text-gray-700">
           <strong>Cleaned Query:</strong> <span id="cleaned-text"></span>
         </p>
       </div>
 
-      <!-- عرض الوقت المستغرق -->
       <div id="elapsed-time" class="mb-4 hidden">
         <p class="text-gray-700">
           <strong>Search Time:</strong> <span id="time-text"></span> seconds
         </p>
       </div>
 
-      <!-- جدول النتائج -->
       <div id="results" class="hidden">
         <h2 class="text-lg font-semibold mb-2">Results</h2>
         <table class="w-full border-collapse border">
@@ -86,7 +82,6 @@
         </table>
       </div>
 
-      <!-- رسالة الخطأ -->
       <div id="error" class="text-red-500 mt-4 hidden"></div>
     </div>
 
@@ -104,16 +99,13 @@
         const elapsedTimeDiv = document.getElementById("elapsed-time");
         const timeText = document.getElementById("time-text");
 
-        // إعادة تعيين العرض
         resultsDiv.classList.add("hidden");
         cleanedQueryDiv.classList.add("hidden");
         elapsedTimeDiv.classList.add("hidden");
         errorDiv.classList.add("hidden");
         resultsBody.innerHTML = "";
 
-        // إرسال الطلب إلى نقطة FastAPI
         fetch("/frontend/search", {
-          // تعديل المسار ليطابق FastAPI
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -136,15 +128,12 @@
               return;
             }
 
-            // عرض النص المعالج
             cleanedText.textContent = data.cleaned_query;
             cleanedQueryDiv.classList.remove("hidden");
 
-            // عرض الوقت المستغرق
             timeText.textContent = data.elapsed_time.toFixed(3);
             elapsedTimeDiv.classList.remove("hidden");
 
-            // عرض النتائج
             data.results.forEach((result) => {
               const row = document.createElement("tr");
               row.innerHTML = `

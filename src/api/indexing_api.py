@@ -20,16 +20,13 @@ class SearchIndexRequest(BaseModel):
 
 @app.post("/build_index")
 async def api_build_index(data: BuildIndexRequest):
-    # بناء الفهرس
     build_index(data.collection_name, data.index_dir, data.fields)
     return {"status": f"Index built successfully for {data.collection_name} in {data.index_dir}"}
 
 
 @app.post("/search_index")
 async def api_search_index(data: SearchIndexRequest):
-    # البحث في الفهرس
     results = search_index(data.index_dir, data.query_text, data.fields, data.limit)
-    # تحويل النتائج إلى تنسيق JSON
     results_response = [
         {"doc_id": doc_id, "content": content} for doc_id, content in results
     ]

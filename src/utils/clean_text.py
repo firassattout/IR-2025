@@ -17,20 +17,13 @@ special_corrections = {
 
 
 def clean_text(text, model_type='tfidf'):
-    try:
-        text = re.sub(r"http\S+|www\S+", "", text.lower())
-        text = re.sub(r"[^a-z\s]", " ", text)
-        tokens = word_tokenize(text)
+    text = re.sub(r"http\S+|www\S+", "", text.lower())
+    text = re.sub(r"[^a-z\s]", " ", text)
+    tokens = word_tokenize(text)
+    tokens = [special_corrections.get(word, word) for word in tokens]
+    if model_type == 'tfidf':
+        tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
+    else:
+        tokens = [word for word in tokens if word.strip()]
 
-        # تصحيح الكلمات المحددة فقط
-        tokens = [special_corrections.get(word, word) for word in tokens]
-
-        if model_type == 'tfidf':
-            tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
-        else:
-            tokens = [word for word in tokens if word.strip()]
-
-        return ' '.join(tokens)
-    except Exception as e:
-        print(f"[!] Cleaning Error: {e}")
-        return text
+    return ' '.join(tokens)

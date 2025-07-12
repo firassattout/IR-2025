@@ -12,12 +12,12 @@ app = FastAPI(title="FAISS Build API")
 
 class BuildFAISSRequest(BaseModel):
     dataset: str
-    model_type: str  # 'tfidf', 'bert', or 'hybrid'
+    model_type: str 
     vector_path: str
     index_path: str
-    svd_path: Optional[str] = None  # لـ TF-IDF وHybrid
-    bert_model_path: Optional[str] = None  # لـ BERT وHybrid
-    tfidf_model_path: Optional[str] = None  # لـ BERT وHybrid
+    svd_path: Optional[str] = None  
+    bert_model_path: Optional[str] = None  
+    tfidf_model_path: Optional[str] = None  
 
 @app.post("/build_faiss_index")
 async def api_build_faiss_index(data: BuildFAISSRequest):
@@ -32,7 +32,6 @@ async def api_build_faiss_index(data: BuildFAISSRequest):
         bert_model_path = os.path.join(project_root, data.bert_model_path) if data.bert_model_path else None
         tfidf_model_path = os.path.join(project_root, data.tfidf_model_path) if data.tfidf_model_path else None
 
-        # تحميل المتجهات بناءً على نوع النموذج
         if data.model_type == 'tfidf':
             if not svd_path:
                 raise HTTPException(status_code=400, detail="svd_path is required for TF-IDF model")
@@ -59,7 +58,6 @@ async def api_build_faiss_index(data: BuildFAISSRequest):
         else:
             raise HTTPException(status_code=400, detail="Invalid model_type. Choose 'tfidf', 'bert', or 'hybrid'.")
 
-        # بناء فهرس FAISS
         build_faiss_index(vectors, doc_ids, index_path)
         return {"status": f"FAISS index built successfully for {data.dataset} ({data.model_type})"}
     except Exception as e:

@@ -9,25 +9,21 @@ def build_index(collection_name, index_dir, fields=["cleaned_text"]):
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     index_dir = os.path.join(project_root, index_dir)
     
-    # إنشاء مجلد الفهرس إذا لم يكن موجودًا
+
     os.makedirs(index_dir, exist_ok=True)
     
-    # تعريف هيكلية الفهرس
     schema = Schema(
         doc_id=ID(stored=True),
-        **{field: TEXT(stored=True) for field in fields}  # دعم حقول ديناميكية
+        **{field: TEXT(stored=True) for field in fields}  
     )
     
-    # إنشاء الفهرس
     index = create_in(index_dir, schema)
     writer = index.writer()
     
-    # جلب البيانات من MongoDB
     client = MongoClient('localhost', 27017)
     db = client['IR_PROJECT']
     collection = db[collection_name]
     
-    # إضافة الوثائق إلى الفهرس
     for doc in collection.find():
         doc_data = {"doc_id": str(doc["doc_id"])}
         for field in fields:
@@ -46,7 +42,6 @@ def search_index(index_dir, query_text, fields=["cleaned_text"], limit=10):
     with index.searcher() as searcher:
         query_parser = MultifieldParser(fields, index.schema)
         
-        # ✅ التنظيف فقط إذا كنا نبحث في cleaned_text فقط
         query_input = clean_text(query_text) if fields == ["cleaned_text"] else query_text
         
         query = query_parser.parse(query_input)

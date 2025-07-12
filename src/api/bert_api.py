@@ -25,14 +25,12 @@ class TransformBertQueryRequest(BaseModel):
 
 @app.post("/build_bert_embeddings")
 async def api_build_bert_embeddings(data: BuildBertRequest):
-        # بناء التضمينات
         build_bert_embeddings(data.collection_name, data.model_path, data.vector_path, data.batch_size)
         return {"status": "BERT embeddings built successfully"}
 
 
 @app.post("/load_bert_embeddings")
 async def api_load_bert_embeddings(data: LoadBertRequest):
-        # تحميل التضمينات
         tokenizer, model, embeddings, doc_ids = load_bert_embeddings(data.model_path, data.vector_path)
         return {
             "status": "BERT embeddings loaded successfully",
